@@ -1,0 +1,85 @@
+ <!DOCTYPE html>
+  <html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Скрипт</title> 
+    <style type="text/css">
+    body {
+      color: #000;
+      font-size: 16px;
+    }
+     .insert_text {
+      text-transform: uppercase;
+      color: green;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    #form {
+      max-width: 600px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+
+    </style> 
+ </head>
+    
+<body>
+   <div class="container">
+    <div class="col-md-12">
+      <div class="col-md-6 col-sm-6">
+        <form id ="form" class="form-horizontal" method="GET" >      
+        <div class="form-group ">               
+          <div class="text-center">
+            <input id="mark" type="number" class="form-control mains" name= "name" >
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-9 col-sm-offset-1">
+            <input type="submit" id ="insert" placeholder="Введите число" class="btn btn-success"></input>
+          </div>
+          </div>
+        </form></div>
+      <div class="col-md-6 col-sm-6"><p>Право на образование гарантируется статьей 43 Конституцией Российской Федерации.
+      Вопросы образования согласно Конституции России находятся в совместном ведении Российской Федерации и её субъектов.
+      Основным правовым документом, регулирующим отношения при реализации этого права и во всей системе образования России, является Федеральный закон от 29 декабря 2012 года № 273-ФЗ «Об образовании в Российской Федерации». Также могут приниматься другие федеральные законы, регулирующие отдельные вопросы в сфере образования (непосредственно или косвенно). В соответствии с Федеральным законом «Об образовании в Российской Федерации» на федеральном уровне принимаются указы Президента Российской Федерации, постановления и распоряжения Правительства Российской Федерации, нормативно-правовые акты и письма Министерства образования и науки, а также документы федеральных ведомств, имеющих в своем ведении образовательные организации, по вопросам работы последних.
+      На уровне субъектов федерации может приниматься региональный закон об образовании, дополняющий на территории субъекта федерации нормы федерального законодательства с учетом особенностей системы образования конкретного субъекта Российской Федерации (Минобрнауки России был разработан соответствующий модельный закон[8]).
+      Органы государственной власти Российской Федерации и субъектов федерации и органы местного самоуправления могут принимать правовые акты, регулирующие отношения в сфере образования, по установленным федеральным законом об образовании предметам ведения (см. в разделе «Управление образованием в Российской Федерации»). Нормы, регулирующие отношения в сфере образования и содержащиеся в федеральных законах и иных нормативных правовых актах Российской Федерации, законах и нормативных правовых актах субъектов Российской Федерации, правовых актах органов местного самоуправления, должны соответствовать федеральному закону об образовании и не могут ограничивать права или снижать уровень предоставления гарантий по сравнению с гарантиями, установленными указанным Федеральным законом.</p></div>
+    </div>
+</div>
+    
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script
+        src="http://code.jquery.com/jquery-3.2.1.min.js" integrity=" sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function marks(key) {
+            var original_text = $('p').text();
+            var p = window.location.search;
+            var count = original_text.length;
+            p = p.match(new RegExp(key + '=([^&=]+)'));
+            console.log(typeof(p));    
+            if (jQuery.isEmptyObject(p)) {
+            var mark =350;
+            }
+            else if (p[1]  > count) {
+              var mark =count/2;
+            }
+            else {
+              var mark = Number(p[1]);
+            }        
+            var one = original_text.substring(0, mark);   
+            var two = original_text.substring(mark, count);
+            var html = "<div class='insert_text'>  NEW INFORMATON </div>",
+            new_str = one + html + two;
+            $('p').html(new_str);   
+        }
+
+        marks(name);
+      </script>  
+     </body>
+</html>
+
+
+
